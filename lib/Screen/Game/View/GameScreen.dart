@@ -101,17 +101,19 @@ class _GameScreenState extends State<GameScreen> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: gameProviderfalse!.GameImage1
+                  children: gameProviderfalse!
+                      .GameImage1
                       .asMap()
                       .entries
                       .map(
-                        (e) => GameImage1(
+                        (e) =>
+                        GameImage1(
                           gameProviderfalse!.GameImage1[e.key],
                           gameProviderfalse!.GameName1[e.key],
                           gameProviderfalse!.GameRate1[e.key],
                           gameProviderfalse!.GameImaegs1[e.key],
                         ),
-                      )
+                  )
                       .toList(),
                 ),
               ),
@@ -137,21 +139,17 @@ class _GameScreenState extends State<GameScreen> {
                   ],
                 ),
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: gameProviderfalse!.GameImage2
-                      .asMap()
-                      .entries
-                      .map(
-                        (e) => GameImage2(
-                          gameProviderfalse!.GameImage2[e.key],
-                          gameProviderfalse!.GameName2[e.key],
-                          gameProviderfalse!.GameRate2[e.key],
-                        ),
-                      )
-                      .toList(),
-                ),
+              Container(
+                height: 150,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: gameProviderfalse!.GameImage2.length,
+                  itemBuilder: (context, index) =>
+                      GameImage2(
+                        gameProviderfalse!.GameImage2[index],
+                        gameProviderfalse!.GameName2[index],
+                        gameProviderfalse!.GameRate2[index],
+                      ),),
               ),
 
               Padding(
@@ -178,15 +176,17 @@ class _GameScreenState extends State<GameScreen> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: gameProviderfalse!.GameImage2
+                  children: gameProviderfalse!
+                      .GameImage2
                       .asMap()
                       .entries
                       .map(
-                        (e) => GameImage3(
-                      gameProviderfalse!.GameImage4[e.key],
-                      gameProviderfalse!.GameName4[e.key],
-                      gameProviderfalse!.GameRate4[e.key],
-                    ),
+                        (e) =>
+                        GameImage3(
+                          gameProviderfalse!.GameImage4[e.key],
+                          gameProviderfalse!.GameName4[e.key],
+                          gameProviderfalse!.GameRate4[e.key],
+                        ),
                   )
                       .toList(),
                 ),
@@ -216,16 +216,18 @@ class _GameScreenState extends State<GameScreen> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: gameProviderfalse!.GameImage2
+                  children: gameProviderfalse!
+                      .GameImage2
                       .asMap()
                       .entries
                       .map(
-                        (e) => GameImage3(
+                        (e) =>
+                        GameImage3(
                           gameProviderfalse!.GameImage3[e.key],
                           gameProviderfalse!.GameName3[e.key],
                           gameProviderfalse!.GameRate3[e.key],
                         ),
-                      )
+                  )
                       .toList(),
                 ),
               ),
