@@ -77,6 +77,9 @@ class _AppState extends State<App> {
         body: SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(
+                height: 10,
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Row(
@@ -95,25 +98,20 @@ class _AppState extends State<App> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: appProviderfalse!.AppImage1
-                      .asMap()
-                      .entries
-                      .map(
-                        (e) => AppImage1(
-                          appProvidertrue!.AppImage1[e.key],
-                          appProvidertrue!.AppName1[e.key],
-                          appProvidertrue!.AppRate1[e.key],
-                        ),
-                      )
-                      .toList(),
+              Container(
+                height: 150,
+                width: double.infinity,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: appProviderfalse!.AppImage1.length,
+                  itemBuilder: (context, index) => AppImage1(
+                    appProviderfalse!.AppImage1[index],
+                    appProviderfalse!.AppName1[index],
+                    appProviderfalse!.AppRate1[index],
+                  ),
                 ),
               ),
+
               SizedBox(
                 height: 10,
               ),
@@ -135,21 +133,22 @@ class _AppState extends State<App> {
                   ],
                 ),
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: appProviderfalse!.AppImage2
-                      .asMap()
-                      .entries
-                      .map(
-                        (e) => AppImage2(
-                          appProvidertrue!.AppImage2[e.key],
-                          appProvidertrue!.AppName2[e.key],
-                          appProvidertrue!.AppRate2[e.key],
-                        ),
-                      )
-                      .toList(),
+              Container(
+                height: 150,
+                width: double.infinity,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: appProviderfalse!.AppImage1.length,
+                  itemBuilder: (context, index) => AppImage1(
+                    appProviderfalse!.AppImage2[index],
+                    appProviderfalse!.AppName2[index],
+                    appProviderfalse!.AppRate2[index],
+                  ),
                 ),
+              ),
+
+              SizedBox(
+                height: 10,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
@@ -169,24 +168,22 @@ class _AppState extends State<App> {
                   ],
                 ),
               ),
+              Container(
+                height: 150,
+                width: double.infinity,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: appProviderfalse!.AppImage1.length,
+                  itemBuilder: (context, index) => AppImage1(
+                    appProviderfalse!.AppImage3[index],
+                    appProviderfalse!.AppName3[index],
+                    appProviderfalse!.AppRate3[index],
+                  ),
+                ),
+              ),
+
               SizedBox(
                 height: 10,
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: appProviderfalse!.AppImage2
-                      .asMap()
-                      .entries
-                      .map(
-                        (e) => AppImage3(
-                          appProvidertrue!.AppImage3[e.key],
-                          appProvidertrue!.AppName3[e.key],
-                          appProvidertrue!.AppRate3[e.key],
-                        ),
-                      )
-                      .toList(),
-                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
@@ -206,23 +203,17 @@ class _AppState extends State<App> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: appProviderfalse!.AppImage2
-                      .asMap()
-                      .entries
-                      .map(
-                        (e) => AppImage4(
-                          appProvidertrue!.AppImage4[e.key],
-                          appProvidertrue!.AppName4[e.key],
-                          appProvidertrue!.AppRate4[e.key],
-                        ),
-                      )
-                      .toList(),
+              Container(
+                height: 150,
+                width: double.infinity,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: appProviderfalse!.AppImage1.length,
+                  itemBuilder: (context, index) => AppImage1(
+                    appProviderfalse!.AppImage4[index],
+                    appProviderfalse!.AppName4[index],
+                    appProviderfalse!.AppRate4[index],
+                  ),
                 ),
               ),
             ],
@@ -233,176 +224,47 @@ class _AppState extends State<App> {
   }
 
   Widget AppImage1(String Images, String Name, String Rate) {
-    return Container(
-      width: 100,
-      height: 150,
-      alignment: Alignment.center,
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                "$Images",
-                height: 60,
-                width: 60,
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Container(
+        width: 100,
+        height: 150,
+        alignment: Alignment.center,
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(
+                  "$Images",
+                  height: 60,
+                  width: 60,
+                ),
               ),
-            ),
-            SizedBox(height: 15),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "$Name",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
+              SizedBox(height: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "$Name",
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                SizedBox(height: 15),
-                Text(
-                  "$Rate",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+                  SizedBox(height: 15),
+                  Text(
+                    "$Rate",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget AppImage4(String Images, String Name, String Rate) {
-    return Container(
-      width: 100,
-      height: 150,
-      alignment: Alignment.center,
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                "$Images",
-                height: 60,
-                width: 60,
+                ],
               ),
-            ),
-            SizedBox(height: 15),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "$Name",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "$Rate",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget AppImage2(String Images, String Name, String Rate) {
-    return Container(
-      width: 100,
-      height: 150,
-      alignment: Alignment.center,
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                "$Images",
-                height: 60,
-                width: 60,
-              ),
-            ),
-            SizedBox(height: 15),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "$Name",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "$Rate",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget AppImage3(String Images, String Name, String Rate) {
-    return Container(
-      width: 100,
-      height: 150,
-      alignment: Alignment.center,
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                "$Images",
-                height: 60,
-                width: 60,
-              ),
-            ),
-            SizedBox(height: 15),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "$Name",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "$Rate",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

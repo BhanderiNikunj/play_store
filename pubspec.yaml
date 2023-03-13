@@ -20,7 +20,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.5 <3.0.0'
+  sdk: '>=2.18.2 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -67,27 +67,41 @@ flutter:
   assets:
     - Assets/Images/Game/Game1/FreeFire/
     - Assets/Images/Game/Game1/Cod/
-    - Assets/Images/Game/Game2/Hill Climb Racing/
-    - Assets/Images/Game/Game2/Subway Surfers/
-    - Assets/Images/Game/Game2/Zombie Catchers/
-    - Assets/Images/Game/Game2/Popo Mine/
-    - Assets/Images/Game/Game1/FreeFire/
-    - Assets/Images/Game/Game2/Knife Hit/
-    - Assets/Images/Game/Game3/Ludo King™/
-    - Assets/Images/Game/Game3/Sudoku King/
-    - Assets/Images/Game/Game3/Carrom Pool/
-    - Assets/Images/Game/Game3/Temple Run/
-    - Assets/Images/Game/Game3/Candy Crush Saga/
-    - Assets/Images/Game/Game4/Minecraft/
-    - Assets/Images/Game/Game4/GTA5/
-    - Assets/Images/Game/Game4/RFS - Real Flight Simulator/
-    - Assets/Images/Game/Game4/Hitman Sniper/
-    - Assets/Images/Game/Game4/GRID™ Autosport/
+    - Assets/Images/Game/Game1/Hill Climb Racing/
+    - Assets/Images/Game/Game1/Subway Surfers/
+    - Assets/Images/Game/Game1/Zombie Catchers/
+    - Assets/Images/Game/Game1/Popo Mine/
+    - Assets/Images/Game/Game1/Knife Hit/
+    - Assets/Images/Game/Game1/GRID™ Autosport/
+    - Assets/Images/Game/Game1/GTA5/1.jpg
+    - Assets/Images/Game/Game1/Hitman Sniper/
+    - Assets/Images/Game/Game1/Minecraft/
+    - Assets/Images/Game/Game1/RFS - Real Flight Simulator/
+    - Assets/Images/Game/Game1/Candy Crush Saga/1.jpg
+    - Assets/Images/Game/Game1/Carrom Pool/
+    - Assets/Images/Game/Game1/Ludo King™/
+    - Assets/Images/Game/Game1/Sudoku King/
+    - Assets/Images/Game/Game1/Temple Run/
     - Assets/Images/App/App1/WhatsApp Messenger/
     - Assets/Images/App/App1/WhatsApp Business/
     - Assets/Images/App/App1/Instagram/
     - Assets/Images/App/App1/Snapchat/
     - Assets/Images/App/App1/Facebook/
+    - Assets/Images/App/App1/Spotify/
+    - Assets/Images/App/App1/Resso Music/
+    - Assets/Images/App/App1/YouTube Music/
+    - Assets/Images/App/App1/JioSaavn/
+    - Assets/Images/App/App1/Music Player/
+    - Assets/Images/App/App1/Amazon India Shop/
+    - Assets/Images/App/App1/JioMart Online Shopping App/
+    - Assets/Images/App/App1/Flipkart Online Shopping App/
+    - Assets/Images/App/App1/Meesho Online Shopping App/
+    - Assets/Images/App/App1/Shopsy Shopping App/
+    - Assets/Images/App/App1/Google Pay/1.jpg
+    - Assets/Images/App/App1/PhonePe UPI, Payment, Recharge/
+    - Assets/Images/App/App1/Paytm/
+    - Assets/Images/App/App1/BHIM/
+    - Assets/Images/App/App1/BHIM Axis Pay/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

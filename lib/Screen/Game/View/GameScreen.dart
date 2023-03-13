@@ -16,222 +16,240 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
     gameProviderfalse = Provider.of<GameProvider>(context, listen: false);
     gameProvidertrue = Provider.of<GameProvider>(context, listen: true);
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
+    return DefaultTabController(
+      length: 2,
+      child: SafeArea(
+        child: Scaffold(
           backgroundColor: Colors.white,
-          elevation: 0,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Container(
-                height: 50,
-                width: 200,
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
-                  borderRadius: BorderRadius.circular(200),
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  height: 50,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade50,
+                    borderRadius: BorderRadius.circular(200),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.search,
+                            color: Colors.black,
+                            size: 20,
+                          ),
+                          Text(
+                            "Search For Games",
+                            style: TextStyle(color: Colors.black, fontSize: 15),
+                          ),
+                        ],
+                      ),
+                      Icon(
+                        Icons.keyboard_voice_outlined,
+                        color: Colors.black,
+                        size: 20,
+                      ),
+                    ],
+                  ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Row(
                   children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.search,
-                          color: Colors.black,
-                          size: 20,
-                        ),
-                        Text(
-                          "Search For Games",
-                          style: TextStyle(color: Colors.black, fontSize: 15),
-                        ),
-                      ],
-                    ),
                     Icon(
-                      Icons.keyboard_voice_outlined,
+                      Icons.notifications_active_outlined,
+                      color: Colors.black,
+                      size: 20,
+                    ),
+                    SizedBox(width: 20),
+                    Icon(
+                      Icons.people,
                       color: Colors.black,
                       size: 20,
                     ),
                   ],
-                ),
+                )
+              ],
+            ),
+            bottom: TabBar(
+              indicatorPadding: EdgeInsets.symmetric(horizontal: 30),
+              indicator: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.black12,
               ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.notifications_active_outlined,
-                    color: Colors.black,
-                    size: 20,
+              tabs: [
+                Tab(
+                  child: Text(
+                    "Chat",
+                    style: TextStyle(color: Colors.black),
                   ),
-                  SizedBox(width: 20),
-                  Icon(
-                    Icons.people,
-                    color: Colors.black,
-                    size: 20,
+                ),
+                Tab(
+                  child: Text(
+                    "Call",
+                    style: TextStyle(color: Colors.black),
                   ),
-                ],
-              )
-            ],
+                ),
+              ],
+            ),
           ),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
+          body: TabBarView(
             children: [
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Ads . Suggested for You",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Icon(
-                      Icons.arrow_forward,
-                      size: 20,
-                    )
-                  ],
-                ),
-              ),
               SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: gameProviderfalse!
-                      .GameImage1
-                      .asMap()
-                      .entries
-                      .map(
-                        (e) =>
-                        GameImage1(
-                          gameProviderfalse!.GameImage1[e.key],
-                          gameProviderfalse!.GameName1[e.key],
-                          gameProviderfalse!.GameRate1[e.key],
-                          gameProviderfalse!.GameImaegs1[e.key],
-                        ),
-                  )
-                      .toList(),
-                ),
-              ),
-
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Column(
                   children: [
-                    Text(
-                      "Top - Rated Games",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Ads . Suggested for You",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            size: 20,
+                          )
+                        ],
                       ),
                     ),
-                    Icon(
-                      Icons.arrow_forward,
-                      size: 20,
-                    )
+                    Container(
+                      height: 200,
+                      width: double.infinity,
+                      child: ListView.builder(
+                        itemCount: gameProviderfalse!.GameImage1.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => GameImage1(
+                          gameProviderfalse!.GameImage1[index],
+                          gameProviderfalse!.GameName1[index],
+                          gameProviderfalse!.GameRate1[index],
+                          gameProviderfalse!.GameImaegs1[index],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Top - Rated Games",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            size: 20,
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 150,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: gameProviderfalse!.GameImage2.length,
+                        itemBuilder: (context, index) => GameImage2(
+                          gameProviderfalse!.GameImage2[index],
+                          gameProviderfalse!.GameName2[index],
+                          gameProviderfalse!.GameRate2[index],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Top - Paid Games",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            size: 20,
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 150,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: gameProviderfalse!.GameImage2.length,
+                        itemBuilder: (context, index) => GameImage2(
+                          gameProviderfalse!.GameImage4[index],
+                          gameProviderfalse!.GameName4[index],
+                          gameProviderfalse!.GameRate4[index],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Top - Rated Games",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            size: 20,
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 150,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: gameProviderfalse!.GameImage2.length,
+                        itemBuilder: (context, index) => GameImage2(
+                          gameProviderfalse!.GameImage3[index],
+                          gameProviderfalse!.GameName3[index],
+                          gameProviderfalse!.GameRate3[index],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
-              Container(
-                height: 150,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: gameProviderfalse!.GameImage2.length,
-                  itemBuilder: (context, index) =>
-                      GameImage2(
-                        gameProviderfalse!.GameImage2[index],
-                        gameProviderfalse!.GameName2[index],
-                        gameProviderfalse!.GameRate2[index],
-                      ),),
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Top - Paid Games",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Icon(
-                      Icons.arrow_forward,
-                      size: 20,
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: gameProviderfalse!
-                      .GameImage2
-                      .asMap()
-                      .entries
-                      .map(
-                        (e) =>
-                        GameImage3(
-                          gameProviderfalse!.GameImage4[e.key],
-                          gameProviderfalse!.GameName4[e.key],
-                          gameProviderfalse!.GameRate4[e.key],
-                        ),
-                  )
-                      .toList(),
-                ),
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Top - Rated Games",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Icon(
-                      Icons.arrow_forward,
-                      size: 20,
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: gameProviderfalse!
-                      .GameImage2
-                      .asMap()
-                      .entries
-                      .map(
-                        (e) =>
-                        GameImage3(
-                          gameProviderfalse!.GameImage3[e.key],
-                          gameProviderfalse!.GameName3[e.key],
-                          gameProviderfalse!.GameRate3[e.key],
-                        ),
-                  )
-                      .toList(),
-                ),
-              ),
-
+              ListView.builder(itemBuilder: (context, index) {
+                return Container(
+                  height: 100,
+                  width: double.infinity,
+                  child: Row(
+                    children: [
+                      Image.asset("${gameProviderfalse!.MainListImage[0]}")
+                    ],
+                  ),
+                );
+              },),
             ],
           ),
         ),
@@ -253,7 +271,7 @@ class _GameScreenState extends State<GameScreen> {
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
                   "$Images1",
-                  height: 130,
+                  height: 120,
                   width: double.infinity,
                 ),
               ),
@@ -297,133 +315,48 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 
-  Widget GameImage4(String Images, String Name, String Rate) {
-    return Container(
-      width: 100,
-      height: 150,
-      alignment: Alignment.center,
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                "$Images",
-                height: 60,
-                width: 60,
-              ),
-            ),
-            SizedBox(height: 15),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "$Name",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "$Rate",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget GameImage2(String Images, String Name, String Rate) {
-    return Container(
-      width: 100,
-      height: 150,
-      alignment: Alignment.center,
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                "$Images",
-                height: 60,
-                width: 60,
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Container(
+        width: 100,
+        height: 150,
+        alignment: Alignment.center,
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(
+                  "$Images",
+                  height: 60,
+                  width: 60,
+                ),
               ),
-            ),
-            SizedBox(height: 15),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "$Name",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
+              SizedBox(height: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "$Name",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "$Rate",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+                  SizedBox(height: 10),
+                  Text(
+                    "$Rate",
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget GameImage3(String Images, String Name, String Rate) {
-    return Container(
-      width: 100,
-      height: 150,
-      alignment: Alignment.center,
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                "$Images",
-                height: 60,
-                width: 60,
+                ],
               ),
-            ),
-            SizedBox(height: 15),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "$Name",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "$Rate",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
