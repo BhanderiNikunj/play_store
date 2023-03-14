@@ -16,205 +16,267 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     appProviderfalse = Provider.of<AppProvider>(context, listen: false);
     appProvidertrue = Provider.of<AppProvider>(context, listen: true);
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
+    return DefaultTabController(
+      length: 2,
+      child: SafeArea(
+        child: Scaffold(
           backgroundColor: Colors.white,
-          elevation: 0,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Container(
-                height: 50,
-                width: 200,
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
-                  borderRadius: BorderRadius.circular(200),
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  height: 50,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade50,
+                    borderRadius: BorderRadius.circular(200),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.search,
+                            color: Colors.black,
+                            size: 20,
+                          ),
+                          Text(
+                            "Search For Games",
+                            style: TextStyle(color: Colors.black, fontSize: 15),
+                          ),
+                        ],
+                      ),
+                      Icon(
+                        Icons.keyboard_voice_outlined,
+                        color: Colors.black,
+                        size: 20,
+                      ),
+                    ],
+                  ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Row(
                   children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.search,
-                          color: Colors.black,
-                          size: 20,
-                        ),
-                        Text(
-                          "Search For Games",
-                          style: TextStyle(color: Colors.black, fontSize: 15),
-                        ),
-                      ],
-                    ),
                     Icon(
-                      Icons.keyboard_voice_outlined,
+                      Icons.notifications_active_outlined,
+                      color: Colors.black,
+                      size: 20,
+                    ),
+                    SizedBox(width: 20),
+                    Icon(
+                      Icons.people,
                       color: Colors.black,
                       size: 20,
                     ),
                   ],
-                ),
+                )
+              ],
+            ),
+            bottom: TabBar(
+              indicatorPadding: EdgeInsets.symmetric(horizontal: 30),
+              indicator: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.black12,
               ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.notifications_active_outlined,
-                    color: Colors.black,
-                    size: 20,
+              tabs: [
+                Tab(
+                  child: Text(
+                    "App",
+                    style: TextStyle(color: Colors.black),
                   ),
-                  SizedBox(width: 20),
-                  Icon(
-                    Icons.people,
-                    color: Colors.black,
-                    size: 20,
+                ),
+                Tab(
+                  child: Text(
+                    "Top App",
+                    style: TextStyle(color: Colors.black),
                   ),
-                ],
-              )
-            ],
+                ),
+              ],
+            ),
           ),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
+          body: TabBarView(
             children: [
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              SingleChildScrollView(
+                child: Column(
                   children: [
-                    Text(
-                      "Ads . Suggested for You",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Ads . Suggested for You",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            size: 20,
+                          )
+                        ],
                       ),
                     ),
-                    Icon(
-                      Icons.arrow_forward,
-                      size: 20,
-                    )
+                    Container(
+                      height: 140,
+                      width: double.infinity,
+                      child: ListView.builder(
+                        itemCount: appProviderfalse!.AppImage1.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => AppImage1(
+                          appProviderfalse!.AppImage1[index],
+                          appProviderfalse!.AppName1[index],
+                          appProviderfalse!.AppRate1[index],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Top - Rated Games",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            size: 20,
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 150,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: appProviderfalse!.AppImage2.length,
+                        itemBuilder: (context, index) => AppImage1(
+                          appProviderfalse!.AppImage2[index],
+                          appProviderfalse!.AppName2[index],
+                          appProviderfalse!.AppRate2[index],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Top - Paid Games",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            size: 20,
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 150,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: appProviderfalse!.AppImage2.length,
+                        itemBuilder: (context, index) => AppImage1(
+                          appProviderfalse!.AppImage4[index],
+                          appProviderfalse!.AppName4[index],
+                          appProviderfalse!.AppRate4[index],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Top - Rated Games",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            size: 20,
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 150,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: appProviderfalse!.AppImage2.length,
+                        itemBuilder: (context, index) => AppImage1(
+                          appProviderfalse!.AppImage3[index],
+                          appProviderfalse!.AppName3[index],
+                          appProviderfalse!.AppRate3[index],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
-              Container(
-                height: 150,
-                width: double.infinity,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: appProviderfalse!.AppImage1.length,
-                  itemBuilder: (context, index) => AppImage1(
-                    appProviderfalse!.AppImage1[index],
-                    appProviderfalse!.AppName1[index],
-                    appProviderfalse!.AppRate1[index],
-                  ),
-                ),
-              ),
-
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Top - Rated Games",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+              ListView.builder(
+                itemCount: appProviderfalse!.MainListImage.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: 100,
+                    width: double.infinity,
+                    child: Row(
+                      children: [
+                        ClipRRect(
+                          clipBehavior: Clip.hardEdge,
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.asset(
+                            "${appProviderfalse!.MainListImage[index]}",
+                            height: 70,
+                            width: 70,
+                          ),
+                        ),
+                        SizedBox(width: 20),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${appProvidertrue!.MainListName[index]}",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              "${appProvidertrue!.MainListRate[index]}",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    Icon(
-                      Icons.arrow_forward,
-                      size: 20,
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                height: 150,
-                width: double.infinity,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: appProviderfalse!.AppImage1.length,
-                  itemBuilder: (context, index) => AppImage1(
-                    appProviderfalse!.AppImage2[index],
-                    appProviderfalse!.AppName2[index],
-                    appProviderfalse!.AppRate2[index],
-                  ),
-                ),
-              ),
-
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Top - Paid Games",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Icon(
-                      Icons.arrow_forward,
-                      size: 20,
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                height: 150,
-                width: double.infinity,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: appProviderfalse!.AppImage1.length,
-                  itemBuilder: (context, index) => AppImage1(
-                    appProviderfalse!.AppImage3[index],
-                    appProviderfalse!.AppName3[index],
-                    appProviderfalse!.AppRate3[index],
-                  ),
-                ),
-              ),
-
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Top - Rated Games",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Icon(
-                      Icons.arrow_forward,
-                      size: 20,
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                height: 150,
-                width: double.infinity,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: appProviderfalse!.AppImage1.length,
-                  itemBuilder: (context, index) => AppImage1(
-                    appProviderfalse!.AppImage4[index],
-                    appProviderfalse!.AppName4[index],
-                    appProviderfalse!.AppRate4[index],
-                  ),
-                ),
+                  );
+                },
               ),
             ],
           ),

@@ -84,13 +84,13 @@ class _GameScreenState extends State<GameScreen> {
               tabs: [
                 Tab(
                   child: Text(
-                    "Chat",
+                    "Game",
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
                 Tab(
                   child: Text(
-                    "Call",
+                    "Top Game",
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
@@ -239,17 +239,49 @@ class _GameScreenState extends State<GameScreen> {
                   ],
                 ),
               ),
-              ListView.builder(itemBuilder: (context, index) {
-                return Container(
-                  height: 100,
-                  width: double.infinity,
-                  child: Row(
-                    children: [
-                      Image.asset("${gameProviderfalse!.MainListImage[0]}")
-                    ],
-                  ),
-                );
-              },),
+              ListView.builder(
+                itemCount: gameProviderfalse!.MainListImage.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: 100,
+                    width: double.infinity,
+                    child: Row(
+                      children: [
+                        ClipRRect(
+                          clipBehavior: Clip.hardEdge,
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.asset(
+                            "${gameProviderfalse!.MainListImage[index]}",
+                            height: 70,
+                            width: 70,
+                          ),
+                        ),
+                        SizedBox(width: 20),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${gameProvidertrue!.MainListName[index]}",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              "${gameProvidertrue!.MainListRate[index]}",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ],
           ),
         ),

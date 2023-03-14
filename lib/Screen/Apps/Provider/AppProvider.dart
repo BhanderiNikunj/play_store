@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-class AppProvider extends ChangeNotifier
-{
+class AppProvider extends ChangeNotifier {
   List AppImage1 = [
     "Assets/Images/App/App1/WhatsApp Messenger/1.jpg",
     "Assets/Images/App/App1/WhatsApp Business/1.jpg",
@@ -83,6 +82,73 @@ class AppProvider extends ChangeNotifier
     "BHIM Axis Pay",
   ];
   List AppRate4 = [
+    "4.6⭐",
+    "4.3⭐",
+    "4.2⭐",
+    "4.1⭐",
+    "4.5⭐",
+  ];
+
+  List MainListImage = [
+    "Assets/Images/App/App1/WhatsApp Messenger/1.jpg",
+    "Assets/Images/App/App1/WhatsApp Business/1.jpg",
+    "Assets/Images/App/App1/Instagram/1.jpg",
+    "Assets/Images/App/App1/Snapchat/1.jpg",
+    "Assets/Images/App/App1/Facebook/1.jpg",
+    "Assets/Images/App/App1/Spotify/1.jpg",
+    "Assets/Images/App/App1/Resso Music/1.jpg",
+    "Assets/Images/App/App1/YouTube Music/1.jpg",
+    "Assets/Images/App/App1/JioSaavn/1.jpg",
+    "Assets/Images/App/App1/Music Player/1.jpg",
+    "Assets/Images/App/App1/Amazon India Shop/1.jpg",
+    "Assets/Images/App/App1/JioMart Online Shopping App/1.jpg",
+    "Assets/Images/App/App1/Flipkart Online Shopping App/1.jpg",
+    "Assets/Images/App/App1/Meesho Online Shopping App/1.jpg",
+    "Assets/Images/App/App1/Shopsy Shopping App/1.jpg",
+    "Assets/Images/App/App1/Google Pay/1.jpg",
+    "Assets/Images/App/App1/PhonePe UPI, Payment, Recharge/1.jpg",
+    "Assets/Images/App/App1/Paytm/1.jpg",
+    "Assets/Images/App/App1/BHIM/1.jpg",
+    "Assets/Images/App/App1/BHIM Axis Pay/1.jpg",
+  ];
+  List MainListName = [
+    "WhatsApp Messenger",
+    "WhatsApp Business",
+    "Instagram",
+    "Snapchat",
+    "Facebook",
+    "Spotify: Music and Podcasts",
+    "Resso Music - Songs & Lyrics",
+    "YouTube Music",
+    "JioSaavn - Music & Podcasts",
+    "Music Player: Play Music",
+    "Amazon India Shop",
+    "JioMart Online Shopping App",
+    "Flipkart Online Shopping App",
+    "Meesho Online Shopping App",
+    "Shopsy Shopping App",
+    "Google Pay",
+    "PhonePe UPI, Payment, Recharge",
+    "Paytm: Secure UPI Payments",
+    "BHIM",
+    "BHIM Axis Pay",
+  ];
+  List MainListRate = [
+    "4.1⭐",
+    "4.1⭐",
+    "4.3⭐",
+    "4.1⭐",
+    "4.1⭐",
+    "4.3⭐",
+    "4.3⭐",
+    "4.2⭐",
+    "4.3⭐",
+    "4.7⭐",
+    "4.2⭐",
+    "4.2⭐",
+    "4.2⭐",
+    "4.1⭐",
+    "4.4⭐",
     "4.6⭐",
     "4.3⭐",
     "4.2⭐",
