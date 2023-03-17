@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:play_store/Screen/Apps/View/AppPage.dart';
-import 'package:play_store/Screen/Game/View/GameScreen.dart';
-import 'package:play_store/Screen/Home/Provider/HomeProvider.dart';
+import 'package:play_store/Android_Screen/Apps/View/AppPage.dart';
+import 'package:play_store/Android_Screen/Game/View/GameScreen.dart';
+import 'package:play_store/Android_Screen/Home/Provider/HomeProvider.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {

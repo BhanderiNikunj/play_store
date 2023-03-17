@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:play_store/Screen/Apps/Provider/AppProvider.dart';
+import 'package:play_store/Android_Screen/Game/Provider/GameProvider.dart';
+import 'package:play_store/Android_Screen/Installing/Model/ModelClass.dart';
 import 'package:provider/provider.dart';
 
-class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
+class GameScreen extends StatefulWidget {
+  const GameScreen({Key? key}) : super(key: key);
 
   @override
-  State<App> createState() => _AppState();
+  State<GameScreen> createState() => _GameScreenState();
 }
 
-class _AppState extends State<App> {
-  AppProvider? appProvidertrue, appProviderfalse;
+class _GameScreenState extends State<GameScreen> {
+  GameProvider? gameProvidertrue, gameProviderfalse;
 
   @override
   Widget build(BuildContext context) {
-    appProviderfalse = Provider.of<AppProvider>(context, listen: false);
-    appProvidertrue = Provider.of<AppProvider>(context, listen: true);
+    gameProviderfalse = Provider.of<GameProvider>(context, listen: false);
+    gameProvidertrue = Provider.of<GameProvider>(context, listen: true);
     return DefaultTabController(
       length: 2,
       child: SafeArea(
@@ -84,13 +85,13 @@ class _AppState extends State<App> {
               tabs: [
                 Tab(
                   child: Text(
-                    "App",
+                    "Game",
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
                 Tab(
                   child: Text(
-                    "Top App",
+                    "Top Game",
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
@@ -124,17 +125,21 @@ class _AppState extends State<App> {
                       ),
                     ),
                     Container(
-                      height: 140,
+                      height: 200,
                       width: double.infinity,
                       child: ListView.builder(
-                        itemCount: appProviderfalse!.AppImage1.length,
+                        itemCount: gameProviderfalse!.GameImage1.length,
                         scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) => AppImage1(
-                          appProviderfalse!.AppImage1[index],
-                          appProviderfalse!.AppName1[index],
-                          appProviderfalse!.AppRate1[index],
+                        itemBuilder: (context, index) => GameImage1(
+                          gameProviderfalse!.GameImage1[index],
+                          gameProviderfalse!.GameName1[index],
+                          gameProviderfalse!.GameRate1[index],
+                          gameProviderfalse!.GameImaegs1[index],
                         ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 10, right: 10),
@@ -158,11 +163,11 @@ class _AppState extends State<App> {
                       height: 150,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: appProviderfalse!.AppImage2.length,
-                        itemBuilder: (context, index) => AppImage1(
-                          appProviderfalse!.AppImage2[index],
-                          appProviderfalse!.AppName2[index],
-                          appProviderfalse!.AppRate2[index],
+                        itemCount: gameProviderfalse!.GameImage2.length,
+                        itemBuilder: (context, index) => GameImage2(
+                          gameProviderfalse!.GameImage2[index],
+                          gameProviderfalse!.GameName2[index],
+                          gameProviderfalse!.GameRate2[index],
                         ),
                       ),
                     ),
@@ -191,11 +196,11 @@ class _AppState extends State<App> {
                       height: 150,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: appProviderfalse!.AppImage2.length,
-                        itemBuilder: (context, index) => AppImage1(
-                          appProviderfalse!.AppImage4[index],
-                          appProviderfalse!.AppName4[index],
-                          appProviderfalse!.AppRate4[index],
+                        itemCount: gameProviderfalse!.GameImage2.length,
+                        itemBuilder: (context, index) => GameImage2(
+                          gameProviderfalse!.GameImage4[index],
+                          gameProviderfalse!.GameName4[index],
+                          gameProviderfalse!.GameRate4[index],
                         ),
                       ),
                     ),
@@ -224,11 +229,11 @@ class _AppState extends State<App> {
                       height: 150,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: appProviderfalse!.AppImage2.length,
-                        itemBuilder: (context, index) => AppImage1(
-                          appProviderfalse!.AppImage3[index],
-                          appProviderfalse!.AppName3[index],
-                          appProviderfalse!.AppRate3[index],
+                        itemCount: gameProviderfalse!.GameImage2.length,
+                        itemBuilder: (context, index) => GameImage2(
+                          gameProviderfalse!.GameImage3[index],
+                          gameProviderfalse!.GameName3[index],
+                          gameProviderfalse!.GameRate3[index],
                         ),
                       ),
                     ),
@@ -236,7 +241,7 @@ class _AppState extends State<App> {
                 ),
               ),
               ListView.builder(
-                itemCount: appProviderfalse!.MainListImage.length,
+                itemCount: gameProviderfalse!.MainListImage.length,
                 itemBuilder: (context, index) {
                   return Container(
                     height: 100,
@@ -247,7 +252,7 @@ class _AppState extends State<App> {
                           clipBehavior: Clip.hardEdge,
                           borderRadius: BorderRadius.circular(15),
                           child: Image.asset(
-                            "${appProviderfalse!.MainListImage[index]}",
+                            "${gameProviderfalse!.MainListImage[index]}",
                             height: 70,
                             width: 70,
                           ),
@@ -258,14 +263,14 @@ class _AppState extends State<App> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "${appProvidertrue!.MainListName[index]}",
+                              "${gameProvidertrue!.MainListName[index]}",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
                             ),
                             Text(
-                              "${appProvidertrue!.MainListRate[index]}",
+                              "${gameProvidertrue!.MainListRate[index]}",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
@@ -285,47 +290,125 @@ class _AppState extends State<App> {
     );
   }
 
-  Widget AppImage1(String Images, String Name, String Rate) {
+  Widget GameImage1(String Images, String Name, String Rate, String Images1) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: InkWell(
+        onTap: () {
+          Model m1 = Model(
+            Name: Name,
+            Rate: Rate,
+            Image: Images,
+          );
+          Navigator.pushNamed(context, 'install',arguments: m1);
+        },
+        child: Container(
+          width: 200,
+          height: 190,
+          alignment: Alignment.center,
+          child: Center(
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    "$Images1",
+                    height: 120,
+                    width: double.infinity,
+                  ),
+                ),
+                SizedBox(height: 10),
+                Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image.asset(
+                        "$Images",
+                        height: 50,
+                        width: 50,
+                      ),
+                    ),
+                    SizedBox(width: 15),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "$Name",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "$Rate",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget GameImage2(String Images, String Name, String Rate) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: Container(
-        width: 100,
-        height: 150,
-        alignment: Alignment.center,
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Image.asset(
-                  "$Images",
-                  height: 60,
-                  width: 60,
+      child: InkWell(
+        onTap: () {
+          Model m1 = Model(
+            Name: Name,
+            Rate: Rate,
+            Image: Images,
+          );
+          Navigator.pushNamed(context, 'install',arguments: m1);
+        },
+        child: Container(
+          width: 100,
+          height: 150,
+          alignment: Alignment.center,
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                    "$Images",
+                    height: 60,
+                    width: 60,
+                  ),
                 ),
-              ),
-              SizedBox(height: 15),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "$Name",
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
+                SizedBox(height: 15),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "$Name",
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    "$Rate",
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
+                    SizedBox(height: 10),
+                    Text(
+                      "$Rate",
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
